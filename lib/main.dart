@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_tiktok_clone/constants/gaps.dart';
-import 'package:flutter_tiktok_clone/constants/sizes.dart';
-import 'package:flutter_tiktok_clone/screens/sugn_up/sign_up_screen.dart';
+import 'package:flutter_tiktok_clone/features/authentication/sign_up_screen.dart';
 
 void main() {
   runApp(const TikTokApp());
