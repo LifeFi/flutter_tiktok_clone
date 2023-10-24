@@ -15,6 +15,7 @@ class MainNavigationScreen extends StatefulWidget {
 
 class _MainNavigationScreenState extends State<MainNavigationScreen> {
   int _selectedIndex = 0;
+  bool _onTapDown = false;
 
   void _onTap(int index) {
     setState(() {
@@ -31,6 +32,24 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
         fullscreenDialog: true,
       ),
     );
+  }
+
+  void _onPostVideoButtonTapDown(TapDownDetails tapDownDetails) {
+    setState(() {
+      _onTapDown = true;
+    });
+  }
+
+  void _onPostVideoButtonTapUp(TapUpDetails tapUpDetails) {
+    setState(() {
+      _onTapDown = false;
+    });
+  }
+
+  void _onPostVideoButtonTapCancel() {
+    setState(() {
+      _onTapDown = false;
+    });
   }
 
   @override
@@ -79,8 +98,13 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
               ),
               Gaps.h24,
               GestureDetector(
+                onTapDown: _onPostVideoButtonTapDown,
+                onTapCancel: _onPostVideoButtonTapCancel,
+                onTapUp: _onPostVideoButtonTapUp,
                 onTap: _onPostVideoButtonTap,
-                child: const PostVideoButton(),
+                child: PostVideoButton(
+                  onTapDown: _onTapDown,
+                ),
               ),
               Gaps.h24,
               NavTab(
