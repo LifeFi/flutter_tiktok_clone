@@ -40,7 +40,7 @@ class _VideoTimelineScreenState extends State<VideoTimelineScreen> {
         color: colors[index],
         child: Center(
           child: Text(
-            "Screen $index/${colors.length}",
+            "Screen $index/${colors.length - 1}",
             style: const TextStyle(fontSize: 50),
           ),
         ),
