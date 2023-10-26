@@ -3,7 +3,6 @@ import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_tiktok_clone/constants/sizes.dart';
 import 'package:flutter_tiktok_clone/features/authentication/sign_up_screen.dart';
-import 'package:flutter_tiktok_clone/features/main_navigation/main_navigation_screen.dart';
 import 'package:flutter_tiktok_clone/generated/l10n.dart';
 
 void main() async {
@@ -103,7 +102,7 @@ class TikTokApp extends StatelessWidget {
         ),
         primaryColor: const Color(0xFFE9435A),
       ),
-      home: const MainNavigationScreen(),
+      home: const SignUpScreen(),
     );
   }
 }
