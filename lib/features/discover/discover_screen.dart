@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_tiktok_clone/utils.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -28,11 +29,15 @@ class _DiscoverScreenState extends State<DiscoverScreen> {
       TextEditingController(text: "Initial Text");
 
   void _onSearchChanged(String value) {
-    print("Searching form $value");
+    if (kDebugMode) {
+      print("Searching form $value");
+    }
   }
 
   void _onSearchSubmitted(String value) {
-    print("Submitted $value");
+    if (kDebugMode) {
+      print("Submitted $value");
+    }
   }
 
   @override

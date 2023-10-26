@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_tiktok_clone/utils.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter_tiktok_clone/constants/gaps.dart';
 import 'package:flutter_tiktok_clone/constants/sizes.dart';
@@ -101,15 +102,13 @@ class _ChatDetailScreenState extends State<ChatDetailScreen> {
           Positioned(
             bottom: 0,
             width: MediaQuery.of(context).size.width,
-            child: BottomAppBar(
-              color: Colors.grey.shade50,
-              child: Row(
+            child: Container(
+              color: isDarkMode(context) ? Colors.black : Colors.grey.shade50,
+              child: const Row(
                 children: [
-                  const Expanded(child: TextField()),
+                  Expanded(child: TextField()),
                   Gaps.h20,
-                  Container(
-                    child: const FaIcon(FontAwesomeIcons.paperPlane),
-                  )
+                  FaIcon(FontAwesomeIcons.paperPlane)
                 ],
               ),
             ),
