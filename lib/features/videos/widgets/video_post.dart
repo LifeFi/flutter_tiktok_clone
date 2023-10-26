@@ -5,6 +5,7 @@ import 'package:flutter_tiktok_clone/constants/gaps.dart';
 import 'package:flutter_tiktok_clone/constants/sizes.dart';
 import 'package:flutter_tiktok_clone/features/videos/widgets/video_button.dart';
 import 'package:flutter_tiktok_clone/features/videos/widgets/video_comments.dart';
+import 'package:flutter_tiktok_clone/generated/l10n.dart';
 import 'package:video_player/video_player.dart';
 import 'package:visibility_detector/visibility_detector.dart';
 
@@ -50,7 +51,6 @@ class _VideoPostState extends State<VideoPost>
     if (kIsWeb) {
       await _videoPlayerController.setVolume(0);
     }
-
     _videoPlayerController.addListener(_onVideoChange);
     setState(() {});
   }
@@ -107,6 +107,7 @@ class _VideoPostState extends State<VideoPost>
     }
     await showModalBottomSheet(
       context: context,
+      isScrollControlled: true,
       backgroundColor: Colors.transparent,
       builder: (context) => const VideoComments(),
     );
@@ -196,16 +197,15 @@ class _VideoPostState extends State<VideoPost>
                   child: Text("니꼬"),
                 ),
                 Gaps.v24,
-                const VideoButton(
-                  icon: FontAwesomeIcons.solidHeart,
-                  text: "2.9M",
-                ),
+                VideoButton(
+                    icon: FontAwesomeIcons.solidHeart,
+                    text: S.of(context).likeCount(98798711111987)),
                 Gaps.v24,
                 GestureDetector(
                   onTap: () => _onCommentsTap(context),
-                  child: const VideoButton(
+                  child: VideoButton(
                     icon: FontAwesomeIcons.solidComment,
-                    text: "33K",
+                    text: S.of(context).commentCount(65656),
                   ),
                 ),
                 Gaps.v24,
