@@ -92,7 +92,7 @@ class _DiscoverScreenState extends State<DiscoverScreen> {
                 crossAxisCount: width > Breakpoints.lg ? 5 : 2,
                 crossAxisSpacing: Sizes.size10,
                 mainAxisSpacing: Sizes.size10,
-                childAspectRatio: 9 / 20,
+                childAspectRatio: 9 / 21,
               ),
               itemBuilder: (context, index) => LayoutBuilder(
                 builder: (context, constraints) => Column(
