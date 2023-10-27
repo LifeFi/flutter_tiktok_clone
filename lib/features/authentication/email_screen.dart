@@ -66,7 +66,7 @@ class _EmailScreenState extends State<EmailScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final args = ModalRoute.of(context)!.settings.arguments as EmailScreenArgs;
+    // final args = ModalRoute.of(context)!.settings.arguments as EmailScreenArgs;
 
     return GestureDetector(
       onTap: _onScaffoldTap,
@@ -82,9 +82,9 @@ class _EmailScreenState extends State<EmailScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Gaps.v40,
-              Text(
-                "What is your email?, ${args.username}",
-                style: const TextStyle(
+              const Text(
+                "What is your email?",
+                style: TextStyle(
                   fontSize: Sizes.size24,
                   fontWeight: FontWeight.w700,
                 ),

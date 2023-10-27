@@ -22,7 +22,7 @@ class TikTokApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    S.load(const Locale("en"));
+    // S.load(const Locale("en"));
     return MaterialApp.router(
       routerConfig: router,
       debugShowCheckedModeBanner: false,
@@ -34,9 +34,8 @@ class TikTokApp extends StatelessWidget {
         GlobalMaterialLocalizations.delegate,
       ],
       supportedLocales: const [
-        Locale("en"),
-        Locale("ko"),
-        Locale("es"),
+        Locale('en'),
+        Locale('ko'),
       ],
       themeMode: ThemeMode.system,
       theme: ThemeData(

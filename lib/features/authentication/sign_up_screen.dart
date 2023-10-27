@@ -20,7 +20,7 @@ class SignUpScreen extends StatelessWidget {
       ),
     ); */
     // final result = await Navigator.of(context).pushNamed(LoginScreen.routeName);
-    context.go(LoginScreen.routeName);
+    context.push(LoginScreen.routeName);
   }
 
   void _onEmailTap(BuildContext context) {
@@ -49,7 +49,7 @@ class SignUpScreen extends StatelessWidget {
           }),
     ); */
     // Navigator.of(context).pushNamed(UsernameScreen.routeName);
-    context.go(UsernameScreen.routeName);
+    context.push(UsernameScreen.routeName);
   }
 
   @override
