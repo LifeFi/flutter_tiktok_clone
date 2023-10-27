@@ -1,13 +1,12 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_tiktok_clone/generated/l10n.dart';
-import 'package:flutter_tiktok_clone/utils.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter_tiktok_clone/constants/gaps.dart';
 import 'package:flutter_tiktok_clone/constants/sizes.dart';
 import 'package:flutter_tiktok_clone/features/authentication/username_screen.dart';
 import 'package:flutter_tiktok_clone/features/authentication/login_screen.dart';
 import 'package:flutter_tiktok_clone/features/authentication/widgets/auth_button.dart';
+import 'package:flutter_tiktok_clone/generated/l10n.dart';
+import 'package:flutter_tiktok_clone/utils.dart';
 
 class SignUpScreen extends StatelessWidget {
   const SignUpScreen({super.key});
@@ -18,16 +17,33 @@ class SignUpScreen extends StatelessWidget {
         builder: (context) => const LoginScreen(),
       ),
     );
-    if (kDebugMode) {
-      print(result);
-    }
+    print(result);
   }
 
   void _onEmailTap(BuildContext context) {
     Navigator.of(context).push(
-      MaterialPageRoute(
-        builder: (context) => const UsernameScreen(),
-      ),
+      PageRouteBuilder(
+          transitionDuration: const Duration(seconds: 1),
+          reverseTransitionDuration: const Duration(seconds: 1),
+          pageBuilder: (context, animation, secondaryAnimation) =>
+              const UsernameScreen(),
+          transitionsBuilder: (context, animation, secondaryAnimation, child) {
+            final offsetAnimation = Tween(
+              begin: const Offset(1, 0),
+              end: Offset.zero,
+            ).animate(animation);
+            final opacityAnimation = Tween(
+              begin: 0.5,
+              end: 1.0,
+            ).animate(animation);
+            return SlideTransition(
+              position: offsetAnimation,
+              child: FadeTransition(
+                opacity: opacityAnimation,
+                child: child,
+              ),
+            );
+          }),
     );
   }
 
@@ -63,19 +79,19 @@ class SignUpScreen extends StatelessWidget {
                   Opacity(
                     opacity: 0.7,
                     child: Text(
-                      S.of(context).signUpSubtitle(122),
-                      style: Theme.of(context).textTheme.titleMedium,
+                      S.of(context).signUpSubtitle(19687),
+                      style: const TextStyle(
+                        fontSize: Sizes.size16,
+                      ),
                       textAlign: TextAlign.center,
                     ),
                   ),
                   Gaps.v40,
                   if (orientation == Orientation.portrait) ...[
-                    GestureDetector(
-                      onTap: () => _onEmailTap(context),
-                      child: AuthButton(
-                        icon: const FaIcon(FontAwesomeIcons.user),
-                        text: S.of(context).emailPasswordButton,
-                      ),
+                    AuthButton(
+                      icon: const FaIcon(FontAwesomeIcons.user),
+                      text: S.of(context).emailPasswordButton,
+                      onTap: _onEmailTap,
                     ),
                     Gaps.v16,
                     AuthButton(
@@ -87,12 +103,10 @@ class SignUpScreen extends StatelessWidget {
                     Row(
                       children: [
                         Expanded(
-                          child: GestureDetector(
-                            onTap: () => _onEmailTap(context),
-                            child: AuthButton(
-                              icon: const FaIcon(FontAwesomeIcons.user),
-                              text: S.of(context).emailPasswordButton,
-                            ),
+                          child: AuthButton(
+                            icon: const FaIcon(FontAwesomeIcons.user),
+                            text: S.of(context).emailPasswordButton,
+                            onTap: _onEmailTap,
                           ),
                         ),
                         Gaps.h16,
@@ -109,7 +123,9 @@ class SignUpScreen extends StatelessWidget {
             ),
           ),
           bottomNavigationBar: Container(
-            color: isDarkMode(context) ? null : Colors.grey.shade50,
+            color: isDarkMode(context)
+                ? Theme.of(context).appBarTheme.backgroundColor
+                : Colors.grey.shade50,
             child: Padding(
               padding: const EdgeInsets.only(
                 top: Sizes.size32,
