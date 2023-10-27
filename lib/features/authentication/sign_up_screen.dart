@@ -7,6 +7,7 @@ import 'package:flutter_tiktok_clone/features/authentication/login_screen.dart';
 import 'package:flutter_tiktok_clone/features/authentication/widgets/auth_button.dart';
 import 'package:flutter_tiktok_clone/generated/l10n.dart';
 import 'package:flutter_tiktok_clone/utils.dart';
+import 'package:go_router/go_router.dart';
 
 class SignUpScreen extends StatelessWidget {
   static const routeName = "/";
@@ -18,8 +19,8 @@ class SignUpScreen extends StatelessWidget {
         builder: (context) => const LoginScreen(),
       ),
     ); */
-    final result = await Navigator.of(context).pushNamed(LoginScreen.routeName);
-    print(result);
+    // final result = await Navigator.of(context).pushNamed(LoginScreen.routeName);
+    context.go(LoginScreen.routeName);
   }
 
   void _onEmailTap(BuildContext context) {
@@ -47,7 +48,8 @@ class SignUpScreen extends StatelessWidget {
             );
           }),
     ); */
-    Navigator.of(context).pushNamed(UsernameScreen.routeName);
+    // Navigator.of(context).pushNamed(UsernameScreen.routeName);
+    context.go(UsernameScreen.routeName);
   }
 
   @override
@@ -72,7 +74,7 @@ class SignUpScreen extends StatelessWidget {
                 children: [
                   Gaps.v80,
                   Text(
-                    S.of(context).signUpTitle("TikTok", DateTime.now()),
+                    S.of(context).signUpTitle("TikTok"),
                     style: const TextStyle(
                       fontSize: Sizes.size24,
                       fontWeight: FontWeight.w700,
