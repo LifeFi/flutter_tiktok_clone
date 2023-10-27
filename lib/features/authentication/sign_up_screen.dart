@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_tiktok_clone/generated/l10n.dart';
 import 'package:flutter_tiktok_clone/utils.dart';
@@ -11,12 +12,15 @@ import 'package:flutter_tiktok_clone/features/authentication/widgets/auth_button
 class SignUpScreen extends StatelessWidget {
   const SignUpScreen({super.key});
 
-  void _onLoginTap(BuildContext context) {
-    Navigator.of(context).push(
+  void _onLoginTap(BuildContext context) async {
+    final result = await Navigator.of(context).push(
       MaterialPageRoute(
         builder: (context) => const LoginScreen(),
       ),
     );
+    if (kDebugMode) {
+      print(result);
+    }
   }
 
   void _onEmailTap(BuildContext context) {
