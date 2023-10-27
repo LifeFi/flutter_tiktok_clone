@@ -10,7 +10,9 @@ import 'package:flutter_tiktok_clone/utils.dart';
 import 'package:go_router/go_router.dart';
 
 class SignUpScreen extends StatelessWidget {
-  static const routeName = "/";
+  static const routeURL = "/";
+  static const routeName = "signUp";
+
   const SignUpScreen({super.key});
 
   void _onLoginTap(BuildContext context) async {
@@ -20,7 +22,7 @@ class SignUpScreen extends StatelessWidget {
       ),
     ); */
     // final result = await Navigator.of(context).pushNamed(LoginScreen.routeName);
-    context.push(LoginScreen.routeName);
+    context.pushNamed(UsernameScreen.routeName);
   }
 
   void _onEmailTap(BuildContext context) {
