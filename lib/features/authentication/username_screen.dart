@@ -47,7 +47,10 @@ class _UsernameScreenState extends State<UsernameScreen> {
       EmailScreen.routeName,
       arguments: EmailScreenArgs(username: _username),
     ); */
-    context.push(EmailScreen.routeName);
+    context.push(
+      EmailScreen.routeName,
+      extra: EmailScreenArgs(username: _username),
+    );
   }
 
   @override
