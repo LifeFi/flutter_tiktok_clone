@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_tiktok_clone/features/discover/discover_screen.dart';
 import 'package:flutter_tiktok_clone/features/inbox/inbox_screen.dart';
 import 'package:flutter_tiktok_clone/features/users/user_profile_screen.dart';
+import 'package:flutter_tiktok_clone/features/videos/video_recording_screen.dart';
 import 'package:flutter_tiktok_clone/features/videos/video_timeline_screen.dart';
 import 'package:flutter_tiktok_clone/utils.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
