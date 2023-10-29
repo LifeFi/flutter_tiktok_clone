@@ -1,11 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_tiktok_clone/utils.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter_tiktok_clone/constants/gaps.dart';
 import 'package:flutter_tiktok_clone/constants/sizes.dart';
+import 'package:flutter_tiktok_clone/utils.dart';
 
 class ChatDetailScreen extends StatefulWidget {
-  const ChatDetailScreen({super.key});
+  static const String routeName = "chatDetail";
+  static const String routeURL = ":chatId";
+
+  final String chatId;
+
+  const ChatDetailScreen({
+    super.key,
+    required this.chatId,
+  });
 
   @override
   State<ChatDetailScreen> createState() => _ChatDetailScreenState();
@@ -16,10 +24,10 @@ class _ChatDetailScreenState extends State<ChatDetailScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const ListTile(
+        title: ListTile(
           contentPadding: EdgeInsets.zero,
           horizontalTitleGap: Sizes.size8,
-          leading: CircleAvatar(
+          leading: const CircleAvatar(
             radius: Sizes.size24,
             foregroundImage: NetworkImage(
               "https://avatars.githubusercontent.com/u/3612017",
@@ -27,24 +35,24 @@ class _ChatDetailScreenState extends State<ChatDetailScreen> {
             child: Text('니꼬'),
           ),
           title: Text(
-            '니꼬',
-            style: TextStyle(
+            '니꼬 (${widget.chatId})',
+            style: const TextStyle(
               fontWeight: FontWeight.w600,
             ),
           ),
-          subtitle: Text('Active now'),
+          subtitle: const Text('Active now'),
           trailing: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
               FaIcon(
                 FontAwesomeIcons.flag,
-                color: Colors.black,
+                color: Theme.of(context).iconTheme.color,
                 size: Sizes.size20,
               ),
               Gaps.h32,
               FaIcon(
                 FontAwesomeIcons.ellipsis,
-                color: Colors.black,
+                color: Theme.of(context).iconTheme.color,
                 size: Sizes.size20,
               ),
             ],
