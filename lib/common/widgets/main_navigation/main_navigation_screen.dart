@@ -7,8 +7,8 @@ import 'package:flutter_tiktok_clone/utils.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter_tiktok_clone/constants/gaps.dart';
 import 'package:flutter_tiktok_clone/constants/sizes.dart';
-import 'package:flutter_tiktok_clone/features/main_navigation/widgets/nav_tab.dart';
-import 'package:flutter_tiktok_clone/features/main_navigation/widgets/post_video_button.dart';
+import 'package:flutter_tiktok_clone/common/widgets/main_navigation/widgets/nav_tab.dart';
+import 'package:flutter_tiktok_clone/common/widgets/main_navigation/widgets/post_video_button.dart';
 
 class MainNavigationScreen extends StatefulWidget {
   const MainNavigationScreen({super.key});
