@@ -25,7 +25,7 @@ class _VideoRecordingScreenState extends State<VideoRecordingScreen>
 
   bool _isSelfieMode = false;
 
-  late final bool _noCamera = kDebugMode && Platform.isIOS;
+  late final bool _noCamera = kDebugMode && (Platform.isIOS);
 
   late final AnimationController _buttonAnimationController =
       AnimationController(
