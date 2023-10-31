@@ -42,7 +42,7 @@ class TikTokApp extends ConsumerWidget {
   const TikTokApp({super.key});
 
   @override
-  Widget build(BuildContext contex, WidgetRef ref) {
+  Widget build(BuildContext context, WidgetRef ref) {
     // S.load(const Locale("en"));
     return MaterialApp.router(
       routerConfig: ref.watch(routerProvider),
