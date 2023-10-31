@@ -1,27 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_tiktok_clone/features/authentication/login_screen.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:go_router/go_router.dart';
 import 'package:flutter_tiktok_clone/constants/gaps.dart';
 import 'package:flutter_tiktok_clone/constants/sizes.dart';
+import 'package:flutter_tiktok_clone/features/authentication/login_screen.dart';
 import 'package:flutter_tiktok_clone/features/authentication/username_screen.dart';
 import 'package:flutter_tiktok_clone/features/authentication/widgets/auth_button.dart';
 import 'package:flutter_tiktok_clone/generated/l10n.dart';
 import 'package:flutter_tiktok_clone/utils.dart';
-import 'package:go_router/go_router.dart';
 
 class SignUpScreen extends StatelessWidget {
   static const routeURL = "/";
   static const routeName = "signUp";
-
   const SignUpScreen({super.key});
 
   void _onLoginTap(BuildContext context) async {
-    /*   final result = await Navigator.of(context).push(
-      MaterialPageRoute(
-        builder: (context) => const LoginScreen(),
-      ),
-    ); */
-    // final result = await Navigator.of(context).pushNamed(LoginScreen.routeName);
     context.pushNamed(LoginScreen.routeName);
   }
 
@@ -75,10 +68,13 @@ class SignUpScreen extends StatelessWidget {
                   ),
                   Gaps.v40,
                   if (orientation == Orientation.portrait) ...[
-                    AuthButton(
-                      icon: const FaIcon(FontAwesomeIcons.user),
-                      text: S.of(context).emailPasswordButton,
-                      onTap: _onEmailTap,
+                    GestureDetector(
+                      onTap: () => _onEmailTap(context),
+                      child: AuthButton(
+                        icon: const FaIcon(FontAwesomeIcons.user),
+                        text: S.of(context).emailPasswordButton,
+                        onTap: _onEmailTap,
+                      ),
                     ),
                     Gaps.v16,
                     AuthButton(
@@ -90,10 +86,13 @@ class SignUpScreen extends StatelessWidget {
                     Row(
                       children: [
                         Expanded(
-                          child: AuthButton(
-                            icon: const FaIcon(FontAwesomeIcons.user),
-                            text: S.of(context).emailPasswordButton,
-                            onTap: _onEmailTap,
+                          child: GestureDetector(
+                            onTap: () => _onEmailTap(context),
+                            child: AuthButton(
+                              icon: const FaIcon(FontAwesomeIcons.user),
+                              text: S.of(context).emailPasswordButton,
+                              onTap: _onEmailTap,
+                            ),
                           ),
                         ),
                         Gaps.h16,

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_tiktok_clone/constants/gaps.dart';
 import 'package:flutter_tiktok_clone/constants/sizes.dart';
 import 'package:flutter_tiktok_clone/features/authentication/password_screen.dart';
+import 'package:flutter_tiktok_clone/features/authentication/view_models/signup_view_model.dart';
 import 'package:flutter_tiktok_clone/features/authentication/widgets/form_button.dart';
 
 class EmailScreenArgs {
@@ -10,7 +12,7 @@ class EmailScreenArgs {
   EmailScreenArgs({required this.username});
 }
 
-class EmailScreen extends StatefulWidget {
+class EmailScreen extends ConsumerStatefulWidget {
   final String username;
 
   const EmailScreen({
@@ -19,10 +21,10 @@ class EmailScreen extends StatefulWidget {
   });
 
   @override
-  State<EmailScreen> createState() => _EmailScreenState();
+  ConsumerState<EmailScreen> createState() => _EmailScreenState();
 }
 
-class _EmailScreenState extends State<EmailScreen> {
+class _EmailScreenState extends ConsumerState<EmailScreen> {
   final TextEditingController _emailController = TextEditingController();
 
   String _email = "";
@@ -37,8 +39,10 @@ class _EmailScreenState extends State<EmailScreen> {
     });
   }
 
-  void _onScaffoldTap() {
-    FocusScope.of(context).unfocus();
+  @override
+  void dispose() {
+    _emailController.dispose();
+    super.dispose();
   }
 
   String? _isEmailValid() {
@@ -51,8 +55,13 @@ class _EmailScreenState extends State<EmailScreen> {
     return null;
   }
 
+  void _onScaffoldTap() {
+    FocusScope.of(context).unfocus();
+  }
+
   void _onSubmit() {
     if (_email.isEmpty || _isEmailValid() != null) return;
+    ref.read(signUpForm.notifier).state = {"email": _email};
     Navigator.push(
       context,
       MaterialPageRoute(
@@ -62,20 +71,14 @@ class _EmailScreenState extends State<EmailScreen> {
   }
 
   @override
-  void dispose() {
-    _emailController.dispose();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
-    // final args = ModalRoute.of(context)!.settings.arguments as EmailScreenArgs;
-
     return GestureDetector(
       onTap: _onScaffoldTap,
       child: Scaffold(
         appBar: AppBar(
-          title: const Text('Sign Up'),
+          title: const Text(
+            "Sign up",
+          ),
         ),
         body: Padding(
           padding: const EdgeInsets.symmetric(
@@ -97,6 +100,7 @@ class _EmailScreenState extends State<EmailScreen> {
                 controller: _emailController,
                 keyboardType: TextInputType.emailAddress,
                 onEditingComplete: _onSubmit,
+                autocorrect: false,
                 decoration: InputDecoration(
                   hintText: "Email",
                   errorText: _isEmailValid(),
@@ -117,8 +121,9 @@ class _EmailScreenState extends State<EmailScreen> {
               GestureDetector(
                 onTap: _onSubmit,
                 child: FormButton(
-                    disabled: _email.isEmpty || _isEmailValid() != null),
-              )
+                  disabled: _email.isEmpty || _isEmailValid() != null,
+                ),
+              ),
             ],
           ),
         ),
