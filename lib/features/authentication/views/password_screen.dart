@@ -3,9 +3,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter_tiktok_clone/constants/gaps.dart';
 import 'package:flutter_tiktok_clone/constants/sizes.dart';
-import 'package:flutter_tiktok_clone/features/authentication/birthday_screen.dart';
+import 'package:flutter_tiktok_clone/features/authentication/views/birthday_screen.dart';
 import 'package:flutter_tiktok_clone/features/authentication/view_models/signup_view_model.dart';
-import 'package:flutter_tiktok_clone/features/authentication/widgets/form_button.dart';
+import 'package:flutter_tiktok_clone/features/authentication/views/widgets/form_button.dart';
 
 class PasswordScreen extends ConsumerStatefulWidget {
   const PasswordScreen({super.key});
