@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:go_router/go_router.dart';
 import 'package:flutter_tiktok_clone/constants/gaps.dart';
 import 'package:flutter_tiktok_clone/constants/sizes.dart';
 import 'package:flutter_tiktok_clone/features/authentication/login_form_screen.dart';
+import 'package:flutter_tiktok_clone/features/authentication/view_models/social_auth_view_model.dart';
 import 'package:flutter_tiktok_clone/features/authentication/widgets/auth_button.dart';
 import 'package:flutter_tiktok_clone/utils.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:go_router/go_router.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends ConsumerWidget {
   static String routeName = "login";
   static String routeURL = "/login";
-
   const LoginScreen({super.key});
 
   void _onSignUpTap(BuildContext context) {
-    // Navigator.of(context).pop("Hello!");
     context.pop();
   }
 
@@ -28,7 +28,7 @@ class LoginScreen extends StatelessWidget {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       body: SafeArea(
         child: Padding(
@@ -39,7 +39,7 @@ class LoginScreen extends StatelessWidget {
             children: [
               Gaps.v80,
               const Text(
-                'Log in for TikTok',
+                "Log in to TikTok",
                 style: TextStyle(
                   fontSize: Sizes.size24,
                   fontWeight: FontWeight.w700,
@@ -49,7 +49,7 @@ class LoginScreen extends StatelessWidget {
               const Opacity(
                 opacity: 0.7,
                 child: Text(
-                  'Create a profile, follow other accounts, make your own videos, amd more.',
+                  "Manage your account, check notifications, comment on videos, and more.",
                   style: TextStyle(
                     fontSize: Sizes.size16,
                   ),
@@ -57,22 +57,30 @@ class LoginScreen extends StatelessWidget {
                 ),
               ),
               Gaps.v40,
-              AuthButton(
-                icon: const FaIcon(FontAwesomeIcons.user),
-                text: "Use email & password",
-                onTap: _onEmailLoginTap,
+              GestureDetector(
+                onTap: () => _onEmailLoginTap(context),
+                child: const AuthButton(
+                  icon: FaIcon(FontAwesomeIcons.user),
+                  text: "Use email & password",
+                ),
               ),
               Gaps.v16,
-              const AuthButton(
-                icon: FaIcon(FontAwesomeIcons.apple),
-                text: "Continue with Apple",
+              GestureDetector(
+                onTap: () =>
+                    ref.read(socialAuthProvider.notifier).githubSingIn(context),
+                child: const AuthButton(
+                  icon: FaIcon(FontAwesomeIcons.github),
+                  text: "Continue with Github",
+                ),
               ),
             ],
           ),
         ),
       ),
       bottomNavigationBar: Container(
-        color: isDarkMode(context) ? null : Colors.grey.shade50,
+        color: isDarkMode(context)
+            ? Theme.of(context).appBarTheme.backgroundColor
+            : Colors.grey.shade50,
         child: Padding(
           padding: const EdgeInsets.only(
             top: Sizes.size32,
@@ -81,14 +89,23 @@ class LoginScreen extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Text('Don\'t have an account?'),
+              const Text(
+                "Don't have an account?",
+                style: TextStyle(
+                  fontSize: Sizes.size16,
+                ),
+              ),
               Gaps.h5,
               GestureDetector(
                 onTap: () => _onSignUpTap(context),
-                child: Text('Sign Up',
-                    style: TextStyle(
-                        color: Theme.of(context).primaryColor,
-                        fontWeight: FontWeight.w600)),
+                child: Text(
+                  "Sign up",
+                  style: TextStyle(
+                    fontSize: Sizes.size16,
+                    fontWeight: FontWeight.w600,
+                    color: Theme.of(context).primaryColor,
+                  ),
+                ),
               ),
             ],
           ),
