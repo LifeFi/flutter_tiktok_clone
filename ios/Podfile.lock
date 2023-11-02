@@ -641,6 +641,10 @@ PODS:
     - firebase_core
     - Flutter
     - nanopb (< 2.30910.0, >= 2.30908.0)
+  - cloud_functions (4.5.3):
+    - Firebase/Functions (= 10.16.0)
+    - firebase_core
+    - Flutter
   - Firebase/Auth (10.16.0):
     - Firebase/CoreOnly
     - FirebaseAuth (~> 10.16.0)
@@ -649,6 +653,9 @@ PODS:
   - Firebase/Firestore (10.16.0):
     - Firebase/CoreOnly
     - FirebaseFirestore (~> 10.16.0)
+  - Firebase/Functions (10.16.0):
+    - Firebase/CoreOnly
+    - FirebaseFunctions (~> 10.16.0)
   - Firebase/Storage (10.16.0):
     - Firebase/CoreOnly
     - FirebaseStorage (~> 10.16.0)
@@ -656,7 +663,7 @@ PODS:
     - Firebase/Auth (= 10.16.0)
     - firebase_core
     - Flutter
-  - firebase_core (2.20.0):
+  - firebase_core (2.21.0):
     - Firebase/CoreOnly (= 10.16.0)
     - Flutter
   - firebase_storage (11.4.0):
@@ -693,6 +700,16 @@ PODS:
     - "gRPC-C++ (~> 1.49.1)"
     - leveldb-library (~> 1.22)
     - nanopb (< 2.30910.0, >= 2.30908.0)
+  - FirebaseFunctions (10.16.0):
+    - FirebaseAppCheckInterop (~> 10.10)
+    - FirebaseAuthInterop (~> 10.0)
+    - FirebaseCore (~> 10.0)
+    - FirebaseCoreExtension (~> 10.0)
+    - FirebaseMessagingInterop (~> 10.0)
+    - FirebaseSharedSwift (~> 10.0)
+    - GTMSessionFetcher/Core (< 4.0, >= 2.1)
+  - FirebaseMessagingInterop (10.17.0)
+  - FirebaseSharedSwift (10.17.0)
   - FirebaseStorage (10.16.0):
     - FirebaseAppCheckInterop (~> 10.0)
     - FirebaseAuthInterop (~> 10.0)
@@ -804,6 +821,7 @@ PODS:
 DEPENDENCIES:
   - camera_avfoundation (from `.symlinks/plugins/camera_avfoundation/ios`)
   - cloud_firestore (from `.symlinks/plugins/cloud_firestore/ios`)
+  - cloud_functions (from `.symlinks/plugins/cloud_functions/ios`)
   - firebase_auth (from `.symlinks/plugins/firebase_auth/ios`)
   - firebase_core (from `.symlinks/plugins/firebase_core/ios`)
   - firebase_storage (from `.symlinks/plugins/firebase_storage/ios`)
@@ -827,6 +845,9 @@ SPEC REPOS:
     - FirebaseCoreExtension
     - FirebaseCoreInternal
     - FirebaseFirestore
+    - FirebaseFunctions
+    - FirebaseMessagingInterop
+    - FirebaseSharedSwift
     - FirebaseStorage
     - GoogleUtilities
     - "gRPC-C++"
@@ -842,6 +863,8 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/camera_avfoundation/ios"
   cloud_firestore:
     :path: ".symlinks/plugins/cloud_firestore/ios"
+  cloud_functions:
+    :path: ".symlinks/plugins/cloud_functions/ios"
   firebase_auth:
     :path: ".symlinks/plugins/firebase_auth/ios"
   firebase_core:
@@ -868,9 +891,10 @@ SPEC CHECKSUMS:
   BoringSSL-GRPC: 3175b25143e648463a56daeaaa499c6cb86dad33
   camera_avfoundation: 3125e8cd1a4387f6f31c6c63abb8a55892a9eeeb
   cloud_firestore: abc819b936be92e6167aec1a8983d1e48ded2674
+  cloud_functions: acacc2473a46085dd367702b1b3316449b016e49
   Firebase: 25899099b77d255a636e3579c3d9dce10ec150d5
   firebase_auth: 015dab4ffe9e4d97f7d84a3373ad4c8a7712c5c7
-  firebase_core: 2e0e89436a00b664a23bebb08859e5fede7215e9
+  firebase_core: 68027ba03585e3efe1608e35d3ab2777a64eabe9
   firebase_storage: 2972c861e7edafb526553f0f6de65a918e4a9ac0
   FirebaseAppCheckInterop: 534d033d8d0436b4ab066a8205013d271e18a2b9
   FirebaseAuth: 3862d87d4d58deff08f705d471896a2f66e8bbf0
@@ -879,6 +903,9 @@ SPEC CHECKSUMS:
   FirebaseCoreExtension: 47720bb330d7041047c0935a34a3a4b92f818074
   FirebaseCoreInternal: 2cf9202e226e3f78d2bf6d56c472686b935bfb7f
   FirebaseFirestore: 17bd5c8a0ea4be0fcae5a6f95f817983623adb4a
+  FirebaseFunctions: f7c3a837beb8d747a1949b167fb18d219f281c7c
+  FirebaseMessagingInterop: 00e26ab77994e0d99fafeabf0c4726243a50d23d
+  FirebaseSharedSwift: e8fe8d63d434266a1b2c7f02807d5b64462e1851
   FirebaseStorage: d664834746c0274d267072c6bfa100960f90654a
   Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
   gallery_saver: 9fc173c9f4fcc48af53b2a9ebea1b643255be542
