@@ -4,12 +4,13 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter_tiktok_clone/constants/gaps.dart';
 import 'package:flutter_tiktok_clone/constants/sizes.dart';
-import 'package:flutter_tiktok_clone/features/authentication/views/login_screen.dart';
-import 'package:flutter_tiktok_clone/features/authentication/views/username_screen.dart';
 import 'package:flutter_tiktok_clone/features/authentication/view_models/social_auth_view_model.dart';
+import 'package:flutter_tiktok_clone/features/authentication/views/username_screen.dart';
 import 'package:flutter_tiktok_clone/features/authentication/views/widgets/auth_button.dart';
 import 'package:flutter_tiktok_clone/generated/l10n.dart';
 import 'package:flutter_tiktok_clone/utils.dart';
+
+import 'login_screen.dart';
 
 class SignUpScreen extends ConsumerWidget {
   static const routeURL = "/";
@@ -50,9 +51,9 @@ class SignUpScreen extends ConsumerWidget {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Gaps.v80,
-                  Text(
-                    S.of(context).signUpTitle("TikTok"),
-                    style: const TextStyle(
+                  const Text(
+                    "Sign up for TikTok",
+                    style: TextStyle(
                       fontSize: Sizes.size24,
                       fontWeight: FontWeight.w700,
                     ),
@@ -72,9 +73,9 @@ class SignUpScreen extends ConsumerWidget {
                   if (orientation == Orientation.portrait) ...[
                     GestureDetector(
                       onTap: () => _onEmailTap(context),
-                      child: AuthButton(
-                        icon: const FaIcon(FontAwesomeIcons.user),
-                        text: S.of(context).emailPasswordButton,
+                      child: const AuthButton(
+                        icon: FaIcon(FontAwesomeIcons.user),
+                        text: "Use email & password",
                       ),
                     ),
                     Gaps.v16,
@@ -135,7 +136,7 @@ class SignUpScreen extends ConsumerWidget {
                   GestureDetector(
                     onTap: () => _onLoginTap(context),
                     child: Text(
-                      S.of(context).logIn("female"),
+                      "Log in",
                       style: TextStyle(
                         fontSize: Sizes.size16,
                         fontWeight: FontWeight.w600,
