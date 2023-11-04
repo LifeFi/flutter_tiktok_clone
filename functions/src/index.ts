@@ -76,7 +76,8 @@ export const onLikedCreated = functions.firestore
       ).data();
       if (user) {
         const token = user.token;
-        await admin.messaging().sendToDevice(token, {
+        await admin.messaging().send({
+          token: token,
           data: {
             screen: "123",
           },
